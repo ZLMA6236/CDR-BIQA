@@ -172,8 +172,6 @@ class SPAQFolder(data.Dataset):
         return length
 
 class FLIVEFolder(data.Dataset):
-
-
     def __init__(self, root, index, transform, transform_s, patch_num):
         imgname = []
         mos_all = []
@@ -261,8 +259,115 @@ class LSRQFolder(data.Dataset):
         length = len(self.samplea)
         return length
 
+class LIVEFolder(data.Dataset):
+
+    def __init__(self, root, index, transform, patch_num):
+
+        refpath = os.path.join(root, 'refimgs')
+        refname = getFileName(refpath, '.bmp')
+
+        jp2kroot = os.path.join(root, 'jp2k')
+        jp2kname = self.getDistortionTypeFileName(jp2kroot, 227)
+
+        jpegroot = os.path.join(root, 'jpeg')
+        jpegname = self.getDistortionTypeFileName(jpegroot, 233)
+
+        wnroot = os.path.join(root, 'wn')
+        wnname = self.getDistortionTypeFileName(wnroot, 174)
+
+        gblurroot = os.path.join(root, 'gblur')
+        gblurname = self.getDistortionTypeFileName(gblurroot, 174)
+
+        fastfadingroot = os.path.join(root, 'fastfading')
+        fastfadingname = self.getDistortionTypeFileName(fastfadingroot, 174)
+
+        imgpath = jp2kname + jpegname + wnname + gblurname + fastfadingname
+
+        dmos = scipy.io.loadmat(os.path.join(root, 'dmos_realigned.mat'))
+        labels = dmos['dmos_new'].astype(np.float32)
+
+        sample = []
+        for i, item in enumerate(index):
+            for aug in range(patch_num):
+                sample.append((imgpath[item], labels[0][item]))
+        self.samples = sample
+        self.transform = transform
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (sample, target) where target is class_index of the target class.
+        """
+        path, target = self.samples[index]
+        sample = pil_loader(path)
+        if self.transform is not None:
+            sample = self.transform(sample)
+        return sample, target
+
+    def __len__(self):
+        length = len(self.samples)
+        return length
+
+    def getDistortionTypeFileName(self, path, num):
+        filename = []
+        index = 1
+        for i in range(0, num):
+            name = '%s%s%s' % ('img', str(index), '.bmp')
+            filename.append(os.path.join(path, name))
+            index = index + 1
+        return filename
+
+
+class CSIQFolder(data.Dataset):
+
+    def __init__(self, root, index, transform, patch_num):
+        txtpath = os.path.join(root, 'csiq_label.txt')
+        fh = open(txtpath, 'r')
+        imgnames = []
+        target = []
+        for line in fh:
+            line = line.split('\n')
+            words = line[0].split()
+            imgnames.append((words[0]))
+            target.append(words[1])
+        labels = np.array(target).astype(np.float32)
+        sample = []
+        for i, item in enumerate(index):
+            for aug in range(patch_num):
+                sample.append((os.path.join(root, 'dis', imgnames[item]), labels[item]))
+        self.samples = sample
+        self.transform = transform
+
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (sample, target) where target is class_index of the target class.
+        """
+        path, target = self.samples[index]
+        sample = pil_loader(path)
+        sample = self.transform(sample)
+
+        return sample, target
+
+    def __len__(self):
+        length = len(self.samples)
+        return length
 
 def pil_loader(path):
     with open(path, 'rb') as f:
         img = Image.open(f)
         return img.convert('RGB')
+
+def getFileName(path, suffix):
+    filename = []
+    f_list = os.listdir(path)
+    for i in f_list:
+        if os.path.splitext(i)[1] == suffix:
+            filename.append(i)
+    return filename
