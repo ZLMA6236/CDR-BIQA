@@ -63,7 +63,10 @@ Some available options in config_swintiqa.py:
 ```
 python train_cdrbiqa.py
 ```
-
+- Test
+```
+python test_cdrbiqa.py
+```
 ## References
 * [hyperIQA](https://github.com/SSL92/hyperIQA)
 * [UNIQUE](https://github.com/zwx8981/UNIQUE)
