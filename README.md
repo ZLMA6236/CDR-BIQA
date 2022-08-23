@@ -49,11 +49,11 @@ python train_swintiqa.py
 ```
 
 Some available options in config_swintiqa.py:
-* `_C.DATA.DATASET`: Training and testing dataset, support datasets: livec | koniq-10k | bid | spaq | [flive](https://github.com/baidut/paq2piq).
+* `_C.DATA.DATASET`: Training and testing dataset, support datasets: livec(https://live.ece.utexas.edu/research/ChallengeDB/index.html) | [koniq-10k](http://database.mmsp-kn.de/koniq-10k-database.html) | [bid](https://drive.google.com/drive/folders/1Qmtp-Fo1iiQiyf-9uRUpO-YAAM0mcIey) | [spaq](https://github.com/h4nwei/SPAQ) | [flive](https://github.com/baidut/paq2piq).
 * `_C.DATA.TRAIN_PATCH_NUMBER`: Sampled image patch number per training image.
 * `_C.DATA.TEST_PATCH_NUMBER`: Sampled image patch number per testing image.
 * `_C.DATA.BATCH_SIZE`: Batch size.
-* `_C.MODEL.TYPE`: Backbone, support model: swin | resnet | convnext
+* `_C.MODEL.TYPE`: Backbone, support model: [swin](https://github.com/microsoft/Swin-Transformer) | resnet | [convnext](https://github.com/facebookresearch/ConvNeXt)
 
 #### CDR-BIQA
 - Prepare data: please download the datasets at [Google drive](https://drive.google.com/drive/folders/18qnWf7NEDokkfeBkCXoxttFZMp9Tfa5l?usp=sharing).
