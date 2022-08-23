@@ -49,7 +49,7 @@ python train_swintiqa.py
 ```
 
 Some available options in config_swintiqa.py:
-* `_C.DATA.DATASET`: Training and testing dataset, support datasets: livec(https://live.ece.utexas.edu/research/ChallengeDB/index.html) | [koniq-10k](http://database.mmsp-kn.de/koniq-10k-database.html) | [bid](https://drive.google.com/drive/folders/1Qmtp-Fo1iiQiyf-9uRUpO-YAAM0mcIey) | [spaq](https://github.com/h4nwei/SPAQ) | [flive](https://github.com/baidut/paq2piq).
+* `_C.DATA.DATASET`: Training and testing dataset, support datasets: [livec](https://live.ece.utexas.edu/research/ChallengeDB/index.html) | [koniq-10k](http://database.mmsp-kn.de/koniq-10k-database.html) | [bid](https://drive.google.com/drive/folders/1Qmtp-Fo1iiQiyf-9uRUpO-YAAM0mcIey) | [spaq](https://github.com/h4nwei/SPAQ) | [flive](https://github.com/baidut/paq2piq).
 * `_C.DATA.TRAIN_PATCH_NUMBER`: Sampled image patch number per training image.
 * `_C.DATA.TEST_PATCH_NUMBER`: Sampled image patch number per testing image.
 * `_C.DATA.BATCH_SIZE`: Batch size.
