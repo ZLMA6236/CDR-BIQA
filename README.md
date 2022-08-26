@@ -56,7 +56,7 @@ Some available options in config_swintiqa.py:
 * `_C.MODEL.TYPE`: Backbone, support model: [swin](https://github.com/microsoft/Swin-Transformer) | resnet | [convnext](https://github.com/facebookresearch/ConvNeXt)
 
 #### CDR-BIQA
-- Prepare data: please download the datasets at [Google drive](https://drive.google.com/drive/folders/18qnWf7NEDokkfeBkCXoxttFZMp9Tfa5l?usp=sharing).
+- Prepare data: please download the datasets at [Google drive](https://drive.google.com/drive/folders/18qnWf7NEDokkfeBkCXoxttFZMp9Tfa5ll?usp=sharing).
 - Generate pseudo-labels: please run [labels_with_sigmoid.m](data\generate_pseudolabels) to calculate relative probability pseudo-labels. The scores from individual SwinT-IQA model trained on each BIQA dataset.
 
 - Train
