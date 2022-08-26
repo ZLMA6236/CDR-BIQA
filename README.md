@@ -34,7 +34,7 @@ pip install opencv-python yacs openpyxl scipy numpy pillow termcolor
 
 Predicting image quality with our model CDR-BIQA [Online](http://online-ip.xyz).
 
-To run the demo, please download the pre-trained model at [Google drive](https://drive.google.com/file/d/1g75-Wf7F21l5dfU3WTVo2PJAyiwZuXSZ/view?usp=sharing), put it in [pretrained_models](pretrained_models) folder, then run:
+To run the demo, please download the pre-trained model at [Google drive](https://drive.google.com/file/d/1g75-Wf7F21l5dfU3WTVo2PJAyiwZuXSZZ/view?usp=sharing), put it in [pretrained_models](pretrained_models) folder, then run:
 
 ```
 python demo.py
