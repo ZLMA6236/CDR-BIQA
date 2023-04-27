@@ -34,7 +34,7 @@ pip install opencv-python yacs openpyxl scipy numpy pillow termcolor
 
 Predicting image quality with our model CDR-BIQA [Online](http://online-ip.xyz).
 
-To run the demo, please download the pre-trained model at [Google drive](https://drive.google.com/file/d/1g75-Wf7F21l5dfU3WTVo2PJAyiwZuXSZZ/view?usp=sharing), put it in [pretrained_models](pretrained_models) folder, then run:
+To run the demo, please download the pre-trained model at [Google drive](https://drive.google.com/file/d/1g75-Wf7F21l5dfU3WTVo2PJAyiwZuXSZ/view?usp=sharing), put it in [pretrained_models](pretrained_models) folder, then run:
 
 ```
 python demo.py
@@ -56,7 +56,7 @@ Some available options in config_swintiqa.py:
 * `_C.MODEL.TYPE`: Backbone, support model: [swin](https://github.com/microsoft/Swin-Transformer) | resnet | [convnext](https://github.com/facebookresearch/ConvNeXt)
 
 #### CDR-BIQA
-- Prepare data: please download the datasets at [Google drive](https://drive.google.com/drive/folders/18qnWf7NEDokkfeBkCXoxttFZMp9Tfa5ll?usp=sharing).
+- Prepare data: please download the datasets at [Google drive](https://drive.google.com/drive/folders/18qnWf7NEDokkfeBkCXoxttFZMp9Tfa5l?usp=sharing).
 - Generate pseudo-labels: please run [labels_with_sigmoid.m](data\generate_pseudolabels) to calculate relative probability pseudo-labels. The scores from individual SwinT-IQA model trained on each BIQA dataset.
 
 - Train
